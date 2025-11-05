@@ -1,0 +1,1059 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1245385824, guid: 48bc23c85e3b860d4cabb4491b2ffd8f, type: 3}
+  m_Name: EssentialKitSettings
+  m_EditorClassIdentifier:
+  m_applicationSettings:
+    m_logLevel: 2
+    m_appStoreIds:
+      m_ios: 6738040300
+      m_tvos:
+      m_android: com.rogueuniongames.pickaxekingisland
+    m_usagePermissionSettings:
+      m_addressBookUsagePermission:
+        m_description: $productName uses contacts.
+        m_descriptionOverrides:
+          m_ios:
+          m_tvos:
+          m_android:
+      m_cameraUsagePermission:
+        m_description: $productName uses camera.
+        m_descriptionOverrides:
+          m_ios:
+          m_tvos:
+          m_android:
+      m_galleryUsagePermission:
+        m_description: $productName uses gallery.
+        m_descriptionOverrides:
+          m_ios:
+          m_tvos:
+          m_android:
+      m_galleryWritePermission:
+        m_description: $productName wants to write to gallery.
+        m_descriptionOverrides:
+          m_ios:
+          m_tvos:
+          m_android:
+      m_locationWhenInUsePermission:
+        m_description: $productName would like to user your location.
+        m_descriptionOverrides:
+          m_ios:
+          m_tvos:
+          m_android:
+      m_accessFriendsPermission:
+        m_description: $productName wants to access friends.
+        m_descriptionOverrides:
+          m_ios:
+          m_tvos:
+          m_android:
+  m_addressBookSettings:
+    m_isEnabled: 0
+    m_defaultImage: {fileID: 0}
+  m_appUpdaterSettings:
+    m_isEnabled: 0
+    m_defaultPromptTitle:
+    m_defaultPromptMessage:
+  m_appShortcutsSettings:
+    m_isEnabled: 0
+    m_icons: []
+  m_nativeUISettings:
+    m_isEnabled: 0
+    m_customUICollection:
+      m_rendererPrefab: {fileID: 114797308302321204, guid: 90c3e3b5be1323342b2d9edda7cbabf0, type: 2}
+      m_alertDialogPrefab: {fileID: 114088903834343195, guid: 519562d1508a21b44b3a59b3defb3adf, type: 2}
+      m_datePickerPrefab: {fileID: 0}
+  m_sharingServicesSettings:
+    m_isEnabled: 1
+  m_cloudServicesSettings:
+    m_isEnabled: 1
+    m_iosProperties:
+      m_substituteEntitlementIdentifiers: 1
+    m_androidProperties:
+      m_playServicesApplicationId: 461242645346
+  m_gameServicesSettings:
+    m_isEnabled: 1
+    m_leaderboards:
+    - m_id: iosLastDfense0
+      m_platformId: iosLastDfense0
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios Last Line of Defense Ranking
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: iosMine0
+      m_platformId: iosMine0
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios Mine Ranking
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Global
+      m_platformId: CgkI4vbQobYNEAIQDg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Asia
+      m_platformId: CgkI4vbQobYNEAIQCg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Europe
+      m_platformId: CgkI4vbQobYNEAIQCw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_NorthAmerica
+      m_platformId: CgkI4vbQobYNEAIQDA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_SouthAmerica
+      m_platformId: CgkI4vbQobYNEAIQDQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Russia
+      m_platformId: CgkI4vbQobYNEAIQFA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Asia
+      m_platformId: CgkI4vbQobYNEAIQDw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Europe
+      m_platformId: CgkI4vbQobYNEAIQEA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_NorthAmerica
+      m_platformId: CgkI4vbQobYNEAIQEQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_SouthAmerica
+      m_platformId: CgkI4vbQobYNEAIQEg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Global
+      m_platformId: CgkI4vbQobYNEAIQEw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Russia
+      m_platformId: CgkI4vbQobYNEAIQFQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Asia
+      m_platformId: CgkI4vbQobYNEAIQFg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Europe
+      m_platformId: CgkI4vbQobYNEAIQFw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_NorthAmerica
+      m_platformId: CgkI4vbQobYNEAIQGA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_SouthAmerica
+      m_platformId: CgkI4vbQobYNEAIQGQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Global
+      m_platformId: CgkI4vbQobYNEAIQGg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Russia
+      m_platformId: CgkI4vbQobYNEAIQIA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Asia
+      m_platformId: CgkI4vbQobYNEAIQGw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Europe
+      m_platformId: CgkI4vbQobYNEAIQHA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_NorthAmerica
+      m_platformId: CgkI4vbQobYNEAIQHQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_SouthAmerica
+      m_platformId: CgkI4vbQobYNEAIQHg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Global
+      m_platformId: CgkI4vbQobYNEAIQHw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Russia
+      m_platformId: CgkI4vbQobYNEAIQIQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Asia
+      m_platformId: Ios_KnightProof_Asia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Europe
+      m_platformId: Ios_KnightProof_Europe
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_NorthAmerica
+      m_platformId: Ios_KnightProof_NorthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_SouthAmerica
+      m_platformId: Ios_KnightProof_SouthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Global
+      m_platformId: Ios_KnightProof_Global
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Russia
+      m_platformId: Ios_KnightProof_Russia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Asia
+      m_platformId: Ios_GoldReserve_Asia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Europe
+      m_platformId: Ios_GoldReserve_Europe
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_NorthAmerica
+      m_platformId: Ios_GoldReserve_NorthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_SouthAmerica
+      m_platformId: Ios_GoldReserve_SouthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Global
+      m_platformId: Ios_GoldReserve_Global
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Russia
+      m_platformId: Ios_GoldReserve_Russia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Asia
+      m_platformId: Ios_LastDefense_Asia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Europe
+      m_platformId: Ios_LastDefense_Europe
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_NorthAmerica
+      m_platformId: Ios_LastDefense_NorthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_SouthAmerica
+      m_platformId: Ios_LastDefense_SouthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Global
+      m_platformId: Ios_LastDefense_Global
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Russia
+      m_platformId: Ios_LastDefense_Russia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Asia
+      m_platformId: Ios_MineRank_Asia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Asia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Europe
+      m_platformId: Ios_MineRank_Europe
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Europe
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_NorthAmerica
+      m_platformId: Ios_MineRank_NorthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_NorthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_SouthAmerica
+      m_platformId: Ios_MineRank_SouthAmerica
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_SouthAmerica
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Global
+      m_platformId: Ios_MineRank_Global
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Global
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Russia
+      m_platformId: Ios_MineRank_Russia
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Russia
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Global_1
+      m_platformId: CgkI4vbQobYNEAIQIg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Asia_1
+      m_platformId: CgkI4vbQobYNEAIQIw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Europe_1
+      m_platformId: CgkI4vbQobYNEAIQJA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_NorthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQJQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_SouthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQJg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_LastDefense_Russia_1
+      m_platformId: CgkI4vbQobYNEAIQJw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_LastDefense_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Global_1
+      m_platformId: CgkI4vbQobYNEAIQKA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Asia_1
+      m_platformId: CgkI4vbQobYNEAIQKQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Europe_1
+      m_platformId: CgkI4vbQobYNEAIQKg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_NorthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQKw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_SouthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQLA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_MineRank_Russia_1
+      m_platformId: CgkI4vbQobYNEAIQLQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_MineRank_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Global_1
+      m_platformId: CgkI4vbQobYNEAIQLg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Asia_1
+      m_platformId: CgkI4vbQobYNEAIQLw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Europe_1
+      m_platformId: CgkI4vbQobYNEAIQMA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_NorthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQMQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_SouthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQMg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_KnightProof_Russia_1
+      m_platformId: CgkI4vbQobYNEAIQMw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_KnightProof_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Global_1
+      m_platformId: CgkI4vbQobYNEAIQNA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Asia_1
+      m_platformId: CgkI4vbQobYNEAIQNQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Europe_1
+      m_platformId: CgkI4vbQobYNEAIQNg
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_NorthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQNw
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_SouthAmerica_1
+      m_platformId: CgkI4vbQobYNEAIQOA
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Android_GoldReserve_Russia_1
+      m_platformId: CgkI4vbQobYNEAIQOQ
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Android_GoldReserve_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Global_1
+      m_platformId: Ios_LastDefense_Global_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Asia_1
+      m_platformId: Ios_LastDefense_Asia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Europe_1
+      m_platformId: Ios_LastDefense_Europe_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_NorthAmerica_1
+      m_platformId: Ios_LastDefense_NorthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_SouthAmerica_1
+      m_platformId: Ios_LastDefense_SouthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_LastDefense_Russia_1
+      m_platformId: Ios_LastDefense_Russia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_LastDefense_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Global_1
+      m_platformId: Ios_MineRank_Global_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Asia_1
+      m_platformId: Ios_MineRank_Asia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Europe_1
+      m_platformId: Ios_MineRank_Europe_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_NorthAmerica_1
+      m_platformId: Ios_MineRank_NorthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_SouthAmerica_1
+      m_platformId: Ios_MineRank_SouthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_MineRank_Russia_1
+      m_platformId: Ios_MineRank_Russia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_MineRank_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Global_1
+      m_platformId: Ios_KnightProof_Global_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Asia_1
+      m_platformId: Ios_KnightProof_Asia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Europe_1
+      m_platformId: Ios_KnightProof_Europe_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_NorthAmerica_1
+      m_platformId: Ios_KnightProof_NorthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_SouthAmerica_1
+      m_platformId: Ios_KnightProof_SouthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_KnightProof_Russia_1
+      m_platformId: Ios_KnightProof_Russia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_KnightProof_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Global_1
+      m_platformId: Ios_GoldReserve_Global_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Global_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Asia_1
+      m_platformId: Ios_GoldReserve_Asia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Asia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Europe_1
+      m_platformId: Ios_GoldReserve_Europe_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Europe_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_NorthAmerica_1
+      m_platformId: Ios_GoldReserve_NorthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_NorthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_SouthAmerica_1
+      m_platformId: Ios_GoldReserve_SouthAmerica_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_SouthAmerica_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    - m_id: Ios_GoldReserve_Russia_1
+      m_platformId: Ios_GoldReserve_Russia_1
+      m_platformIdOverrides:
+        m_ios:
+        m_tvos:
+        m_android:
+      m_title: Ios_GoldReserve_Russia_1
+      m_iosProperties: {}
+      m_androidProperties: {}
+    m_achievements: []
+    m_showAchievementCompletionBanner: 0
+    m_allowFriendsAccess: 0
+    m_androidProperties:
+      m_playServicesApplicationId: 461242645346
+      m_serverClientId: 461242645346-2n3gke6rcl7veqn2u68m1r80fnu0b0nt.apps.googleusercontent.com
+      m_forceRefreshToken: 1
+      m_showErrorDialogs: 1
+  m_billingServicesSettings:
+    m_isEnabled: 0
+    m_products: []
+    m_autoFinishTransactions: 1
+    m_androidProperties:
+      m_publicKey:
+  m_networkServicesSettings:
+    m_isEnabled: 0
+    m_hostAddress:
+      m_ipv4: 8.8.8.8
+      m_ipv6: 0:0:0:0:0:FFFF:0808:0808
+    m_autoStartNotifier: 1
+    m_pingSettings:
+      m_maxRetryCount: 3
+      m_timeGapBetweenPolling: 2
+      m_timeOutPeriod: 60
+      m_port: 53
+  m_notificationServicesSettings:
+    m_isEnabled: 0
+    m_presentationOptions: 7
+    m_usesLocationBasedNotification: 0
+    m_pushNotificationServiceType: 0
+    m_androidProperties:
+      m_needsBigStyle: 0
+      m_allowVibration: 1
+      m_whiteSmallIcon: {fileID: 2800000, guid: 74ddbd31d6a9e5a43a6b6d3a5b95525e, type: 3}
+      m_colouredSmallIcon: {fileID: 0}
+      m_allowNotificationDisplayWhenForeground: 0
+      m_accentColor: '#FFFFFF'
+      m_payloadKeys:
+        m_contentTitle: content_title
+        m_contentText: content_text
+        m_tickerText: ticker_text
+        m_userInfo: user_info
+        m_tag: tag
+        m_badge: badge
+        m_priority: priority
+        m_sound: sound
+        m_bigPicture: Icon512.png
+        m_largeIcon: Icon512_2.png
+      m_allowExactTimeScheduling: 0
+      m_canIgnoreDozeMode: 0
+  m_mediaServicesSettings:
+    m_isEnabled: 1
+    m_usesCameraForImageCapture: 0
+    m_usesCameraForVideoCapture: 0
+    m_savesFilesToPhotoGallery: 1
+    m_savesFilesToCustomDirectories: 0
+  m_deepLinkServicesSettings:
+    m_isEnabled: 0
+    m_iosProperties:
+      m_customSchemeUrls: []
+      m_universalLinks: []
+    m_androidProperties:
+      m_customSchemeUrls: []
+      m_universalLinks: []
+  m_rateMyAppSettings:
+    m_isEnabled: 0
+    m_autoShow: 1
+    m_allowReratingForNewVersion: 0
+    m_confirmationDialogSettings:
+      m_canShow: 1
+      m_promptTitle: Rate My App
+      m_promptDescription: If you enjoy using Native Plugins would you mind taking a moment to rate it? It wont take more than a minute. Thanks for your support.
+      m_okButtonLabel: Ok
+      m_cancelButtonLabel: Cancel
+      m_remindLaterButtonLabel: Remind Me Later
+      m_canShowRemindMeLaterButton: 1
+    m_contraintsSettings:
+      m_initialPromptConstraints:
+        m_minHours: 2
+        m_minLaunches: 0
+      m_repeatPromptConstraints:
+        m_minHours: 6
+        m_minLaunches: 5
+  m_taskServicesSettings:
+    m_isEnabled: 0
+  m_utilitySettings:
+    m_isEnabled: 0
+  m_webViewSettings:
+    m_isEnabled: 0
+    m_androidProperties:
+      m_usesCamera: 0
+      m_usesMicrophone: 0
+      m_allowBackNavigationKey: 1
