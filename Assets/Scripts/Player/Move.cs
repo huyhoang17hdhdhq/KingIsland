@@ -11,34 +11,88 @@ public class Move : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    private Animator animator;
+    private TreeManager currentTree;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Lấy giá trị từ Joystick
+       
         float moveX = joystick.Horizontal();
         float moveY = joystick.Vertical();
 
         moveInput = new Vector2(moveX, moveY);
 
-        // Giới hạn tốc độ (nếu joystick chéo)
+        if (moveInput.magnitude > 0.1f)
+        {
+            animator.SetTrigger("nowFarming");
+           
+            animator.SetTrigger("nowWalk");
+            
+        }
+        else
+        {
+            animator.SetTrigger("nowIdle");
+        }
+
+        
         if (moveInput.magnitude > 1)
             moveInput.Normalize();
 
-        // 🔄 Quay mặt theo hướng di chuyển
+        
         if (moveInput.x > 0.1f)
-            transform.localScale = new Vector3(1, 1, 1); // Quay mặt phải
+            transform.localScale = new Vector3(1, 1, 1); 
         else if (moveInput.x < -0.1f)
-            transform.localScale = new Vector3(-1, 1, 1); // Quay mặt trái
+            transform.localScale = new Vector3(-1, 1, 1); 
     }
 
     void FixedUpdate()
     {
-        // Di chuyển nhân vật theo joystick
+        
         rb.velocity = moveInput * moveSpeed;
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        if (other.gameObject.layer == LayerMask.NameToLayer("tree"))
+        {
+           
+            if (other.TryGetComponent<TreeManager>(out TreeManager tree))
+            {
+                currentTree = tree;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+    
+        if (other.gameObject.layer == LayerMask.NameToLayer("tree"))
+        {
+            if (other.TryGetComponent<TreeManager>(out TreeManager tree) && tree == currentTree)
+            {
+                currentTree = null;
+            }
+        }
+    }
+
+    public void OnFarmAnimationEnd()
+    {
+        
+        animator.SetTrigger("EndFarmingMotion");
+
+        
+        animator.SetTrigger("nowFarming");
+
+        if (currentTree != null)
+        {
+            currentTree.ReduceFill();
+        }
+    }
+
 }
