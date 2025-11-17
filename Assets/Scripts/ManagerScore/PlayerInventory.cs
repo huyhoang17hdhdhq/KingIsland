@@ -1,15 +1,14 @@
-﻿using UnityEngine;
-using TMPro;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory Instance { get; private set; }
 
-    [Header("Thời gian nhảy số bằng DOTween")]
-    public float tweenDuration = 0.3f;
+    public ItemUIManager uiManager;
+    public ObjectPool objectPool;
 
+    private Dictionary<ItemType, int> itemCounts = new();
 
     private void Awake()
     {
@@ -19,101 +18,44 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
-
-    public List<TextMeshProUGUI> coinTexts = new();
-    public List<TextMeshProUGUI> diamondTexts = new();
-    public List<TextMeshProUGUI> lumberTexts = new();
-    public List<TextMeshProUGUI> eggTexts = new();
-    public List<TextMeshProUGUI> milkTexts = new();
-
-    public int coin;
-    public int diamond;
-    public int lumber;
-    public int egg;
-    public int milk;
 
     private void Start()
     {
-        coin = PlayerPrefs.GetInt("Coin", 0);
-        diamond = PlayerPrefs.GetInt("Diamond", 0);
-        lumber = PlayerPrefs.GetInt("Lumber", 0);
-        egg = PlayerPrefs.GetInt("Egg", 0);
-        milk = PlayerPrefs.GetInt("Milk", 0);
+        foreach (var data in uiManager.items)
+        {
+            itemCounts[data.type] = PlayerPrefs.GetInt(data.type.ToString(), 0);
+            uiManager.UpdateItemUI(data.type, itemCounts[data.type]);
+        }
 
-        UpdateAllUI(true);
+        UpdateAllPoolObjects();
     }
 
-    public void AddCoin(int amount) => UpdateValue(ref coin, amount, coinTexts, "Coin");
-    public void AddDiamond(int amount) => UpdateValue(ref diamond, amount, diamondTexts, "Diamond");
-    public void AddLumber(int amount) => UpdateValue(ref lumber, amount, lumberTexts, "Lumber");
-    public void AddEgg(int amount) => UpdateValue(ref egg, amount, eggTexts, "Egg");
-    public void AddMilk(int amount) => UpdateValue(ref milk, amount, milkTexts, "Milk");
-
-    public void RemoveCoin(int amount) => UpdateValue(ref coin, -amount, coinTexts, "Coin");
-    public void RemoveDiamond(int amount) => UpdateValue(ref diamond, -amount, diamondTexts, "Diamond");
-    public void RemoveLumber(int amount) => UpdateValue(ref lumber, -amount, lumberTexts, "Lumber");
-    public void RemoveEgg(int amount) => UpdateValue(ref egg, -amount, eggTexts, "Egg");
-    public void RemoveMilk(int amount) => UpdateValue(ref milk, -amount, milkTexts, "Milk");
-
-
-    private void UpdateValue(ref int currentValue, int amount, List<TextMeshProUGUI> texts, string key = "")
+    public void AddItem(ItemType type, int amount)
     {
-        int oldValue = currentValue;
-        currentValue = Mathf.Max(0, currentValue + amount);
-        AnimateValueChange(oldValue, currentValue, texts);
-
-
-        if (!string.IsNullOrEmpty(key))
-        {
-            PlayerPrefs.SetInt(key, currentValue);
-            PlayerPrefs.Save();
-        }
+        ChangeValue(type, amount);
     }
 
-    private void AnimateValueChange(int from, int to, List<TextMeshProUGUI> texts)
+    public void RemoveItem(ItemType type, int amount)
     {
-        foreach (var text in texts)
-        {
-            if (text == null) continue;
-            DOTween.Kill(text);
-            float value = from;
-            DOTween.To(() => value, x =>
-            {
-                value = x;
-                text.text = Mathf.RoundToInt(value).ToString();
-            }, to, tweenDuration).SetEase(Ease.OutQuad).SetId(text);
-        }
+        ChangeValue(type, -amount);
     }
 
-
-    private void UpdateAllUI(bool instant = false)
+    private void ChangeValue(ItemType type, int amount)
     {
-        if (instant)
-        {
-            UpdateUIList(coinTexts, coin);
-            UpdateUIList(diamondTexts, diamond);
-            UpdateUIList(lumberTexts, lumber);
-            UpdateUIList(eggTexts, egg);
-            UpdateUIList(milkTexts, milk);
-        }
-        else
-        {
-            AnimateValueChange(0, coin, coinTexts);
-            AnimateValueChange(0, diamond, diamondTexts);
-            AnimateValueChange(0, lumber, lumberTexts);
-            AnimateValueChange(0, egg, eggTexts);
-            AnimateValueChange(0, milk, milkTexts);
-        }
+        int oldValue = itemCounts.ContainsKey(type) ? itemCounts[type] : 0;
+        int newValue = Mathf.Max(0, oldValue + amount);
+        itemCounts[type] = newValue;
+
+        PlayerPrefs.SetInt(type.ToString(), newValue);
+        PlayerPrefs.Save();
+
+        uiManager.UpdateItemUI(type, newValue);
+        UpdateAllPoolObjects();
     }
 
-    private void UpdateUIList(List<TextMeshProUGUI> texts, int value)
+    private void UpdateAllPoolObjects()
     {
-        foreach (var text in texts)
-        {
-            if (text != null)
-                text.text = value.ToString();
-        }
+        objectPool.UpdateObjects(itemCounts, uiManager);
     }
 }
