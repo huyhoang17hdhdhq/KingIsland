@@ -31357,7 +31357,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_SortAtRoot: 0
 --- !u!1 &6813728383011158567
 GameObject:
@@ -41168,6 +41168,7 @@ GameObject:
   - component: {fileID: 259491506999907520}
   - component: {fileID: 6167776147602704259}
   - component: {fileID: 1664346196228798459}
+  - component: {fileID: 5102710505779658888}
   m_Layer: 10
   m_Name: PlayerCharacter_King
   m_TagString: Player
@@ -41250,7 +41251,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.05}
+  m_Offset: {x: 0, y: 0.31074917}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -41261,7 +41262,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.1, y: 0.11784577}
   m_EdgeRadius: 0
 --- !u!50 &1664346196228798459
 Rigidbody2D:
@@ -41290,6 +41291,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5102710505779658888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971522481057256896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fef865b93d54d4dbef8e893ab306ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  moveSpeed: 0.4
 --- !u!1 &8982228976230454253
 GameObject:
   m_ObjectHideFlags: 0

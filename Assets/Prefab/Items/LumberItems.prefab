@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 305255517802009152}
   - component: {fileID: 4630865774681286890}
   - component: {fileID: 1827869001488152405}
+  - component: {fileID: 2903341049994883172}
   m_Layer: 3
   m_Name: LumberItems
   m_TagString: Untagged
@@ -190,3 +191,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2903341049994883172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4933291426855269853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab25d65ce018e24196b3060c46b821a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  amount: 1

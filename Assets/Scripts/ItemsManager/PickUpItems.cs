@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 
-public class PickUpItems : MonoBehaviour
+public class PickupItem : MonoBehaviour
 {
-    [Header("Tên Layer vật phẩm")]
-    public string itemLayerName = "items"; 
+    public ItemType itemType; 
+    public int amount = 1;    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      
-        if (other.gameObject.layer == LayerMask.NameToLayer(itemLayerName))
+        if (other.CompareTag("Player"))
         {
-            
-            Destroy(other.gameObject,1);
+           
+            PlayerInventory.Instance.AddItem(itemType, amount);
+
+           
+           Destroy (gameObject,1f);
         }
     }
 }

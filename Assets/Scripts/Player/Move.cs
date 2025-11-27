@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     private Vector2 moveInput;
     private Animator animator;
     private TreeManager currentTree;
+    
 
     void Start()
     {
@@ -58,41 +59,41 @@ public class Move : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
         if (other.gameObject.layer == LayerMask.NameToLayer("tree"))
         {
-           
             if (other.TryGetComponent<TreeManager>(out TreeManager tree))
             {
                 currentTree = tree;
+
+               
+                currentTree.Select();
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-    
         if (other.gameObject.layer == LayerMask.NameToLayer("tree"))
         {
             if (other.TryGetComponent<TreeManager>(out TreeManager tree) && tree == currentTree)
             {
+               
+                currentTree.selectMarker.SetActive(false);
+
                 currentTree = null;
+               
             }
         }
     }
 
+    
     public void OnFarmAnimationEnd()
     {
-        
-        animator.SetTrigger("EndFarmingMotion");
-
-        
+        animator.SetTrigger("EndFarmingMotion"); 
         animator.SetTrigger("nowFarming");
-
         if (currentTree != null)
         {
-            currentTree.ReduceFill();
+            currentTree.Chop();
         }
     }
-
 }
