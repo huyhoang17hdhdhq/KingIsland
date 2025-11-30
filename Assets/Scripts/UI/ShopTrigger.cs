@@ -13,9 +13,17 @@ public class ShopTrigger : MonoBehaviour
 
     private static ShopTrigger currentShop;
 
-    private void Awake()
+    
+    private void Start()
     {
-        AnimalShopManager.Instance.RegisterShop(this);
+        if (AnimalShopManager.Instance != null)
+        {
+            AnimalShopManager.Instance.RegisterShop(this);
+        }
+        else
+        {
+            Debug.LogWarning("AnimalShopManager chưa sẵn sàng! Shop này sẽ được đăng ký muộn: " + gameObject.name);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

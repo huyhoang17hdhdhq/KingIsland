@@ -2,15 +2,9 @@
 
 public class TestAddItem : MonoBehaviour
 {
-    //public ItemType testType;
-    //public int amount = 1;
-
-    //public void AddItemTest()
-    //{
-    //    PlayerInventory.Instance.AddItem(testType, amount);
-    //}
     public void OnClickTest()
     {
-        GoldManager.Instance.AddGold(1000);
+        // Cộng 1000 vàng
+        ResourceManager.Instance.Add(ResourceType.Gold, 1000);
     }
 }

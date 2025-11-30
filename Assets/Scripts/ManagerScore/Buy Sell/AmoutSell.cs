@@ -5,21 +5,18 @@ using UnityEngine.UI;
 
 public class AmoutSell : MonoBehaviour
 {
-    public List<TextMeshProUGUI> texts;        
-    public List<GameObject> images;            
-    public List<TextMeshProUGUI> priceTexts;  
+    public List<TextMeshProUGUI> texts;
+    public List<GameObject> images;
+    public List<TextMeshProUGUI> priceTexts;
     public Slider amountSlider;
-    public TextMeshProUGUI goldText;           
-
+    public TextMeshProUGUI goldText;
     private int currentMaxAmount = 0;
-    private ObjectPool.PooledItem selectedItem; 
+    private ObjectPool.PooledItem selectedItem;
     public ObjectPool objectPool;
-
 
     private void OnEnable()
     {
         ButtonSell.OnButtonClickedEvent += OnItemButtonClicked;
-
         if (amountSlider != null)
             amountSlider.onValueChanged.AddListener(OnSliderValueChanged);
     }
@@ -27,7 +24,6 @@ public class AmoutSell : MonoBehaviour
     private void OnDisable()
     {
         ButtonSell.OnButtonClickedEvent -= OnItemButtonClicked;
-
         if (amountSlider != null)
             amountSlider.onValueChanged.RemoveListener(OnSliderValueChanged);
     }
@@ -78,10 +74,8 @@ public class AmoutSell : MonoBehaviour
 
         UpdateGoldText();
 
-       
         selectedItem = null;
         foreach (var item in objectPool.GetActiveObjects())
-
         {
             if (item.obj == parent.gameObject)
             {
@@ -94,7 +88,6 @@ public class AmoutSell : MonoBehaviour
     private void OnSliderValueChanged(float value)
     {
         if (texts.Count == 0 || selectedItem == null) return;
-
         int v = Mathf.RoundToInt(value);
         texts[0].text = v.ToString();
         UpdateGoldText();
@@ -103,9 +96,7 @@ public class AmoutSell : MonoBehaviour
     private void UpdateGoldText()
     {
         if (texts.Count == 0 || priceTexts.Count == 0 || goldText == null || selectedItem == null) return;
-
         if (!int.TryParse(texts[0].text, out int quantity)) return;
-
         int totalGold = quantity * selectedItem.price;
         goldText.text = totalGold.ToString();
     }
@@ -113,7 +104,6 @@ public class AmoutSell : MonoBehaviour
     public void SellItems()
     {
         if (selectedItem == null) return;
-
         if (!int.TryParse(texts[0].text, out int sellAmount)) return;
         if (sellAmount <= 0) return;
 
@@ -128,14 +118,13 @@ public class AmoutSell : MonoBehaviour
         }
         else
         {
-            // cập nhật UI số lượng
             TextMeshProUGUI qtyText = selectedItem.obj.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
             if (qtyText != null) qtyText.text = selectedItem.quantity.ToString();
         }
 
         // Cộng vàng
         int totalGold = sellAmount * selectedItem.price;
-        GoldManager.Instance.AddGold(totalGold);
+        ResourceManager.Instance.Add(ResourceType.Gold, totalGold);
 
         // Reset slider và text
         if (amountSlider != null)
@@ -143,8 +132,8 @@ public class AmoutSell : MonoBehaviour
             amountSlider.value = 0;
             amountSlider.maxValue = currentMaxAmount;
         }
-        texts[0].text = selectedItem.quantity.ToString();
 
+        texts[0].text = selectedItem.quantity.ToString();
         UpdateGoldText();
     }
 }

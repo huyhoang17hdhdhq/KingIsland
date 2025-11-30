@@ -524,7 +524,7 @@ MonoBehaviour:
   minChangeTime: 1
   maxChangeTime: 2
   fillImage: {fileID: 7619278169645531125}
-  fillTime: 10
+  fillTime: 60
 --- !u!50 &5508062621464027451
 Rigidbody2D:
   serializedVersion: 4

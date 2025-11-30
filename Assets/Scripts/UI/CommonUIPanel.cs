@@ -1,5 +1,7 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;        
+using TMPro;
+using System.Collections;
 
 public class CommonUIPanel : MonoBehaviour
 {
@@ -8,8 +10,13 @@ public class CommonUIPanel : MonoBehaviour
     public TextMeshProUGUI castleText;
     public TextMeshProUGUI productionRateText;
     public TextMeshProUGUI priceText;
-    public TextMeshProUGUI levelNowText;   // Level hiện tại
-    public TextMeshProUGUI levelNextText;  // Level tiếp theo
+    public TextMeshProUGUI levelNowText;  
+    public TextMeshProUGUI levelNextText;
+    public TextMeshProUGUI productionlNowText;
+    public TextMeshProUGUI productionNextText;
+
+    public Button upgradeSpeedButton;
+
     public GameObject closeButton;
 
     private void Awake()
@@ -25,13 +32,15 @@ public class CommonUIPanel : MonoBehaviour
         productionRateText.text = info.productionRate;
         priceText.text = AnimalShopManager.GetCurrentPrice().ToString();
 
-        // Tự động cập nhật level khi mở panel
         var shop = ShopTrigger.CurrentShop;
         if (shop != null)
         {
             int currentLevel = shop.GetCurrentLevel();
             UpdateLevelText(currentLevel, currentLevel + 1);
         }
+
+       
+        UpdateProductionSpeedText();
 
         gameObject.SetActive(true);
     }
@@ -42,7 +51,7 @@ public class CommonUIPanel : MonoBehaviour
             priceText.text = price.ToString();
     }
 
-    // HÀM MỚI: Cập nhật Level
+    
     public void UpdateLevelText(int current, int next)
     {
         if (levelNowText != null)
@@ -56,4 +65,41 @@ public class CommonUIPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    
+    public void UpdateProductionSpeedText()
+    {
+        var shop = ShopTrigger.CurrentShop;
+        if (shop == null) return;
+
+        string typeKey = ProductionSpeedManager.GetTypeKey(shop);
+        int currentBonus = ProductionSpeedManager.Instance.GetCurrentBonusPercent(typeKey);
+        int nextBonus = ProductionSpeedManager.Instance.GetNextBonusPercent(typeKey);
+
+        if (productionlNowText != null)
+            productionlNowText.text = $"{currentBonus}%";
+
+        if (productionNextText != null)
+            productionNextText.text = $"{nextBonus}%";
+
+        if (upgradeSpeedButton != null)
+        {
+            bool isMax = currentBonus >= 99;
+            upgradeSpeedButton.interactable = !isMax;
+            upgradeSpeedButton.GetComponentInChildren<TextMeshProUGUI>().text = isMax ? "MAX" : "Tăng tốc";
+        }
+    }
+    public void OnUpgradeSpeedClicked()
+    {
+        var shop = ShopTrigger.CurrentShop;
+        if (shop == null) return;
+
+        string typeKey = ProductionSpeedManager.GetTypeKey(shop);
+        ProductionSpeedManager.Instance.UpgradeSpeedForType(typeKey);
+
+
+        UpdateProductionSpeedText();
+    }
+
 }
+    
+   

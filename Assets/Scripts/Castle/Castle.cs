@@ -32,18 +32,27 @@ public class Castle : MonoBehaviour
         ChangeDirection();
     }
 
+    // Trong FarmAnimal.cs – chỉ sửa đúng 1 chỗ!
+    // Trong FarmAnimal.cs – SỬA CHỈ 1 CHỖ!
     protected virtual void Update()
     {
         if (fillImage != null && !isFilling)
         {
             currentFillTime += Time.deltaTime;
-            fillImage.fillAmount = currentFillTime / fillTime;
 
-            if (currentFillTime >= fillTime)
+            // LẤY KEY RIÊNG CHO LOẠI NÀY
+            string typeKey = ProductionSpeedManager.GetTypeKey(GetComponentInParent<ShopTrigger>());
+
+            // DÙNG TỐC ĐỘ RIÊNG
+            float actualFillTime = ProductionSpeedManager.Instance.GetActualFillTime(fillTime, typeKey);
+
+            fillImage.fillAmount = currentFillTime / actualFillTime;
+
+            if (currentFillTime >= actualFillTime)
             {
-                currentFillTime = fillTime;
+                currentFillTime = actualFillTime;
                 isFilling = true;
-                rb.velocity = Vector2.zero; // dừng di chuyển ngay khi đầy
+                rb.velocity = Vector2.zero;
             }
             else
             {
