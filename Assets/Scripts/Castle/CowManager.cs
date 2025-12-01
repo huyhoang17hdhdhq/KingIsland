@@ -5,6 +5,7 @@ using UnityEngine;
 public class CowManager : Castle
 {
     private Animator animator;
+    protected override ItemType RewardType => ItemType.Milk;
 
     private void Awake()
     {

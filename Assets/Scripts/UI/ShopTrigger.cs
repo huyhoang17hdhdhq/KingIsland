@@ -51,11 +51,18 @@ public class ShopTrigger : MonoBehaviour
     {
         if (currentShop != null && currentShop.shopData != null)
         {
+          
             CommonUIPanel.Instance.Show(currentShop.shopData);
+
+            
             AnimalShopManager.UpdateCurrentShopUI();
+
+           
+            if (currentShop.interactButton != null)
+                currentShop.interactButton.SetActive(false);
         }
     }
- 
+
     public int GetCurrentAnimalCount()
     {
         if (animalParent == null) return 0;

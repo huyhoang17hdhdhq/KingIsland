@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChickenManager : Castle
 {
     private Animator animator;
+    protected override ItemType RewardType => ItemType.Egg;
 
 
     private void Awake()

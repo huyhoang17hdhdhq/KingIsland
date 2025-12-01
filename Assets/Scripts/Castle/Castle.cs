@@ -23,7 +23,9 @@ public class Castle : MonoBehaviour
     private bool facingRight = true;
     private float currentFillTime = 0f;
     protected bool isFilling = false;
-    
+
+    protected virtual ItemType RewardType => ItemType.Egg;
+
 
     protected virtual void Start()
     {
@@ -32,18 +34,18 @@ public class Castle : MonoBehaviour
         ChangeDirection();
     }
 
-    // Trong FarmAnimal.cs – chỉ sửa đúng 1 chỗ!
-    // Trong FarmAnimal.cs – SỬA CHỈ 1 CHỖ!
+    
+  
     protected virtual void Update()
     {
         if (fillImage != null && !isFilling)
         {
             currentFillTime += Time.deltaTime;
 
-            // LẤY KEY RIÊNG CHO LOẠI NÀY
+          
             string typeKey = ProductionSpeedManager.GetTypeKey(GetComponentInParent<ShopTrigger>());
 
-            // DÙNG TỐC ĐỘ RIÊNG
+           
             float actualFillTime = ProductionSpeedManager.Instance.GetActualFillTime(fillTime, typeKey);
 
             fillImage.fillAmount = currentFillTime / actualFillTime;
@@ -79,8 +81,13 @@ public class Castle : MonoBehaviour
 
     protected virtual void SpawnReward()
     {
-        if (rewardPrefab == null || !allowReward) return;
-        Instantiate(rewardPrefab, transform.position, Quaternion.identity);
+        if (!allowReward) return;
+
+        ItemPickupPool.Instance.Get(
+            type: RewardType,
+            position: transform.position,           
+            amount: 1
+        );
     }
 
     private void OnTriggerEnter2D(Collider2D other)

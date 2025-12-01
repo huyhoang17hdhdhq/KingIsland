@@ -112,9 +112,11 @@ public class AmoutSell : MonoBehaviour
 
         // Cập nhật ObjectPool
         selectedItem.quantity -= sellAmount;
+
         if (selectedItem.quantity <= 0)
         {
             selectedItem.obj.SetActive(false);
+            selectedItem.quantity = 0; // đảm bảo = 0
         }
         else
         {
@@ -126,14 +128,25 @@ public class AmoutSell : MonoBehaviour
         int totalGold = sellAmount * selectedItem.price;
         ResourceManager.Instance.Add(ResourceType.Gold, totalGold);
 
-        // Reset slider và text
-        if (amountSlider != null)
+        // CẬP NHẬT TẤT CẢ TEXT TRONG LIST (sửa lỗi mày phát hiện)
+        foreach (var t in texts)
         {
-            amountSlider.value = 0;
-            amountSlider.maxValue = currentMaxAmount;
+            t.text = selectedItem.quantity.ToString();
         }
 
-        texts[0].text = selectedItem.quantity.ToString();
+        // Reset slider
+        if (amountSlider != null)
+        {
+            amountSlider.value = selectedItem.quantity;
+            amountSlider.maxValue = Mathf.Max(1, selectedItem.quantity);
+        }
+
         UpdateGoldText();
+
+        // Tắt panel nếu bán hết
+        if (selectedItem.quantity <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
