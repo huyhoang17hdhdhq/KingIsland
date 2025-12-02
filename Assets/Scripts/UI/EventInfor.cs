@@ -12,5 +12,6 @@ public class EventInfo : ScriptableObject
     public int price = 100;
     public string description = "Mua bò để farm sữa tự động!";
     public GameObject prefabToSpawn;
-    
+
+    public ResourceType unlockedPlotResourceType = ResourceType.Gold;
 }

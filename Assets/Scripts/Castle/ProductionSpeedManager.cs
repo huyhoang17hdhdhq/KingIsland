@@ -75,9 +75,16 @@ public class ProductionSpeedManager : MonoBehaviour
     public int GetCurrentBonusPercent(string typeKey) => GetSpeedBonusForType(typeKey);
     public int GetNextBonusPercent(string typeKey) => GetSpeedBonusForType(typeKey) + 1;
 
-    // Tạo key duy nhất 1 key cho mỗi loại động vật (dùng tên EventInfo asset)
-    public static string GetTypeKey(ShopTrigger shop)
+    public static string GetTypeKey(MonoBehaviour shop)
     {
-        return shop.ShopData.name; // ví dụ: "Cow_Data", "Chicken_Data"
+        if (shop == null) return "Unknown";
+
+        if (shop is ShopTrigger animalShop)
+            return animalShop.ShopData.name;
+
+        if (shop is FarmPlotShopTrigger farmShop)
+            return farmShop.ShopData.name;
+
+        return shop.name; 
     }
 }

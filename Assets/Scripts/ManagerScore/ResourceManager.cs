@@ -7,15 +7,22 @@ public enum ResourceType
 {
     Gold,
     Diamond,
-    Gem,
     Wood,
     Food,
     Star,
     Mana,
     Ticket,
- 
-}
 
+   
+    UnlockedRicePlots,      // Ô RUỘNG LÚA
+    UnlockedWheatPlots,     // Ô RUỘNG LÚA MÌ 
+    UnlockedCornPlots,      // Ô RUỘNG BẮP 
+    UnlockedPotatoPlots,    // Ô RUỘNG KHOAI TÂY
+    UnlockedVegetablePlots, // Ô RUỘNG RAU TỔNG HỢP 
+
+   
+    UnlockedFarmPlots,      
+}
 [Serializable]
 public class ResourceData
 {
@@ -87,5 +94,13 @@ public class ResourceManager : MonoBehaviour
             if (txt != null)
                 txt.text = res.amount.ToString();
         }
+    }
+    public void Set(ResourceType type, int value)
+    {
+        if (!resourceDict.ContainsKey(type)) return;
+
+        resourceDict[type].amount = value;
+        Save(type);
+        UpdateUI(type);
     }
 }

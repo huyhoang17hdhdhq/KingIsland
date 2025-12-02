@@ -6,8 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Castle : MonoBehaviour
 {
-    [Header("Vật phẩm sẽ rơi ra khi Player chạm")]
-    [SerializeField] private GameObject rewardPrefab;
+    
     [Header("Cho phép spawn vật phẩm? (true = có, false = không)")]
     [SerializeField] private bool allowReward = true;
     [SerializeField] protected float speed = 2f;

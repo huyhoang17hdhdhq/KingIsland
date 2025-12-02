@@ -36,8 +36,5 @@ public class Sellitems : MonoBehaviour
         Informationitems.SetActive(false);
     }
 
-    void Update()
-    {
-        
-    }
+   
 }
