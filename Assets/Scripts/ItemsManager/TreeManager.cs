@@ -60,7 +60,7 @@ public class TreeManager : MonoBehaviour
         Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : transform.position;
 
         // Rơi đúng 1 khúc gỗ, lệch nhẹ cho đẹp
-        Vector3 offset = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0);
+        Vector3 offset = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 0);
         ItemPickupPool.Instance.Get(ItemType.Wood, spawnPos + offset, 1);
 
         gameObject.SetActive(false);

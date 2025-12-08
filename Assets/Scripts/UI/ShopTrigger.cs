@@ -11,6 +11,8 @@ public class ShopTrigger : MonoBehaviour
     [SerializeField] private Transform animalParent;
     [SerializeField] private Button buyButton;
 
+    [SerializeField] private string productionSpeedType = "Cow";
+
     private static ShopTrigger currentShop;
 
     
@@ -77,6 +79,13 @@ public class ShopTrigger : MonoBehaviour
     public int GetNextLevel()
     {
         return GetCurrentLevel() + 1;
+    }
+
+
+
+    public string GetProductionSpeedType()
+    {
+        return productionSpeedType; 
     }
 
     public EventInfo ShopData => shopData;

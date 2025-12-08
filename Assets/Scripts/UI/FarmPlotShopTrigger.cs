@@ -28,8 +28,8 @@ public class FarmPlotShopTrigger : MonoBehaviour
     [SerializeField] private Button buyButton;
 
     private static FarmPlotShopTrigger currentShop;
+    [SerializeField] private string productionSpeedType = "Cow";
 
-   
     private ResourceType SaveResourceType
     {
         get
@@ -107,7 +107,7 @@ public class FarmPlotShopTrigger : MonoBehaviour
         if (currentCount < farmPlotsParent.childCount)
         {
             farmPlotsParent.GetChild(currentCount).gameObject.SetActive(true);
-            ResourceManager.Instance.Set(SaveResourceType, currentCount + 1); // lưu đúng loại
+            ResourceManager.Instance.Set(SaveResourceType, currentCount + 1); 
             Debug.Log($"ĐÃ MỞ Ô {cropType} THỨ {currentCount + 1}!");
         }
     }
@@ -122,8 +122,11 @@ public class FarmPlotShopTrigger : MonoBehaviour
             farmPlotsParent.GetChild(i).gameObject.SetActive(i < unlocked);
         }
     }
+    public string GetProductionSpeedType()
+    {
+        return productionSpeedType; 
+    }
 
-    // Properties
     public EventInfo ShopData => shopData;
     public Button BuyButton => buyButton;
     public static FarmPlotShopTrigger CurrentShop => currentShop;

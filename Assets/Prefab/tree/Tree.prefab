@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectMarker: {fileID: 7452299367380115534}
-  lumberPrefab: {fileID: 4933291426855269853, guid: 0b53fe85eb0bed545a1e8a3dff932e51, type: 3}
-  spawnPoint: {fileID: 2061319253828943506}
+  spawnPoint: {fileID: 0}
+  autoChopTime: 0.5
 --- !u!1 &3715217276816659830
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: dba03c75028a2954da96414aa31443f4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

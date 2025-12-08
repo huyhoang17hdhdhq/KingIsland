@@ -23,16 +23,15 @@ public class PickupItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isPickedUp) return;
-        if (other.CompareTag("Player"))
-        {
-            isPickedUp = true;
+        if (isPickedUp || !other.CompareTag("Player")) return;
 
-            PlayerInventory.Instance.AddItem(itemType, amount);
+        isPickedUp = true;
+        PlayerInventory.Instance.AddItem(itemType, amount);
 
-           
-            Invoke(nameof(ReturnToPool), delayBeforeReturn);
-        }
+        
+        QuestManager.Instance.ReportHarvest(itemType, amount);
+
+        Invoke(nameof(ReturnToPool), delayBeforeReturn);
     }
 
     private void ReturnToPool()

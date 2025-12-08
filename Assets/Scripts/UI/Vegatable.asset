@@ -16,6 +16,8 @@ MonoBehaviour:
   castle: "Mua c\u1EA3i"
   productionRate: "T\u1EF7 l\u1EC7 ch\xEDn"
   price: 200
+  diamond: 55
   description: 
   prefabToSpawn: {fileID: 0}
-  unlockedPlotResourceType: 11
+  unlockedPlotResourceType: 15
+  resourceToIncrease: 0

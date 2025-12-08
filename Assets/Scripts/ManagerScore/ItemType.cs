@@ -1,13 +1,11 @@
 public enum ItemType
 {
-    None,
+ 
     Egg,
     Milk,
-    Wool,
-    Carrot,
-    Potato,
+    Sugar,
+    Filed,
     Wood,        
-    Stone,
     Iron,
     Gold,
     

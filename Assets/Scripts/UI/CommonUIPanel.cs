@@ -14,15 +14,22 @@ public class CommonUIPanel : MonoBehaviour
     public TextMeshProUGUI levelNextText;
     public TextMeshProUGUI productionlNowText;
     public TextMeshProUGUI productionNextText;
+    public TextMeshProUGUI diamondText;
 
     public Button upgradeSpeedButton;
 
-    public GameObject closeButton;
+    [SerializeField] private GameObject panelContent;
+
+    
 
     private void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false);
+        DontDestroyOnLoad(gameObject);
+
+        
+        if (panelContent != null)
+            panelContent.SetActive(false);
     }
 
     public void Show(EventInfo info)
@@ -73,15 +80,26 @@ public class CommonUIPanel : MonoBehaviour
        
 
         gameObject.SetActive(true);
+
+        if (panelContent != null)
+            panelContent.SetActive(true);
     }
+
+    
+
 
     public void UpdatePriceText(int price)
     {
         if (priceText != null)
             priceText.text = price.ToString();
     }
+    public void UpdateDiamondText(int diamond)
+    {
+        if (diamondText != null)
+            diamondText.text = diamond.ToString();
+    }
 
-    
+
     public void UpdateLevelText(int current, int next)
     {
         if (levelNowText != null)
@@ -93,56 +111,78 @@ public class CommonUIPanel : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+
+    if (panelContent != null)
+        panelContent.SetActive(false);
     }
+
 
     public void UpdateProductionSpeedText()
     {
-        string typeKey = "";
-
-        var farmShop = FarmPlotShopTrigger.CurrentShop;
-        var animalShop = ShopTrigger.CurrentShop;
-
-        if (farmShop != null)
+        string typeKey = GetCurrentShopSpeedType();
+        if (string.IsNullOrEmpty(typeKey) || typeKey == "Unknown")
         {
-            typeKey = ProductionSpeedManager.GetTypeKey(farmShop);
+            if (productionlNowText) productionlNowText.text = "0%";
+            if (productionNextText) productionNextText.text = "1%";
+            if (diamondText) diamondText.text = "0";
+            return;
         }
-        else if (animalShop != null)
-        {
-            typeKey = ProductionSpeedManager.GetTypeKey(animalShop);
-        }
-
-        if (string.IsNullOrEmpty(typeKey)) return;
 
         int currentBonus = ProductionSpeedManager.Instance.GetCurrentBonusPercent(typeKey);
         int nextBonus = ProductionSpeedManager.Instance.GetNextBonusPercent(typeKey);
+        int nextDiamondCost = ProductionSpeedManager.Instance.GetNextUpgradeDiamondCost(typeKey);
 
         if (productionlNowText != null)
             productionlNowText.text = $"{currentBonus}%";
-
         if (productionNextText != null)
             productionNextText.text = $"{nextBonus}%";
+
+        
+        if (diamondText != null)
+            diamondText.text = nextDiamondCost.ToString();
 
         if (upgradeSpeedButton != null)
         {
             bool isMax = currentBonus >= 99;
-            upgradeSpeedButton.interactable = !isMax;
+            bool canAfford = ResourceManager.Instance.Get(ResourceType.Diamond) >= nextDiamondCost;
+
+            upgradeSpeedButton.interactable = !isMax && canAfford;
 
             var btnText = upgradeSpeedButton.GetComponentInChildren<TextMeshProUGUI>();
             if (btnText != null)
-                btnText.text = isMax ? "MAX" : "Tăng tốc";
+            {
+                if (isMax) btnText.text = "MAX";
+                else if (!canAfford) btnText.text = "Không đủ";
+                else btnText.text = "Tăng tốc";
+            }
         }
     }
     public void OnUpgradeSpeedClicked()
     {
-        var shop = ShopTrigger.CurrentShop;
-        if (shop == null) return;
+        string typeKey = GetCurrentShopSpeedType();
+        if (string.IsNullOrEmpty(typeKey) || typeKey == "Unknown") return;
 
-        string typeKey = ProductionSpeedManager.GetTypeKey(shop);
-        ProductionSpeedManager.Instance.UpgradeSpeedForType(typeKey);
+        if (ProductionSpeedManager.Instance.TryUpgradeSpeedWithDiamond(typeKey))
+        {
 
+            UpdateProductionSpeedText();
+        }
+        else
+        {
+            // Không đủ Diamond hoặc đã max
+            Debug.Log("KHÔNG ĐỦ DIAMOND HOẶC ĐÃ MAX!");
+            // Có thể hiện thông báo "Không đủ Kim Cương!"
+        }
+    }
+    private string GetCurrentShopSpeedType()
+    {
+        if (ShopTrigger.CurrentShop != null)
+            return ShopTrigger.CurrentShop.GetProductionSpeedType();
 
-        UpdateProductionSpeedText();
+        if (FarmPlotShopTrigger.CurrentShop != null)
+            return FarmPlotShopTrigger.CurrentShop.GetProductionSpeedType();
+
+        return "Unknown";
     }
 
 }

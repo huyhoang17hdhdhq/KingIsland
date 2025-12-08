@@ -13,15 +13,24 @@ public enum ResourceType
     Mana,
     Ticket,
 
-   
-    UnlockedRicePlots,      // Ô RUỘNG LÚA
-    UnlockedWheatPlots,     // Ô RUỘNG LÚA MÌ 
-    UnlockedCornPlots,      // Ô RUỘNG BẮP 
-    UnlockedPotatoPlots,    // Ô RUỘNG KHOAI TÂY
-    UnlockedVegetablePlots, // Ô RUỘNG RAU TỔNG HỢP 
+    Cow,
+    Chicken,
+    SugarBeet,
+    WhearFiled,
+
+    UnlockedRicePlots,      
+    UnlockedWheatPlots,     
+    UnlockedCornPlots,     
+    UnlockedPotatoPlots,    
+    UnlockedVegetablePlots,  
 
    
-    UnlockedFarmPlots,      
+    UnlockedFarmPlots,  
+    
+    UnlockIslandChicken,
+    UnlockIslandCow,
+    UnlockIslandFiled,
+    UnlockIslandSugar,
 }
 [Serializable]
 public class ResourceData

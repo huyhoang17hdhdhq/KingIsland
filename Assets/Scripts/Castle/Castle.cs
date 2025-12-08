@@ -6,8 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Castle : MonoBehaviour
 {
-    
-    [Header("Cho phép spawn vật phẩm? (true = có, false = không)")]
+    [Header("Cho phép spawn vật phẩm?")]
     [SerializeField] private bool allowReward = true;
     [SerializeField] protected float speed = 2f;
     [SerializeField] protected float minChangeTime = 1.5f;
@@ -15,7 +14,8 @@ public class Castle : MonoBehaviour
 
     [Header("=== THANH FILL TIẾN TRÌNH ===")]
     [SerializeField] private Image fillImage;
-    [SerializeField] private float fillTime = 10f;
+    [SerializeField] protected float fillTime = 10f;
+
 
     private Rigidbody2D rb;
     private float timer;
@@ -23,29 +23,34 @@ public class Castle : MonoBehaviour
     private float currentFillTime = 0f;
     protected bool isFilling = false;
 
-    protected virtual ItemType RewardType => ItemType.Egg;
+    // ĐÃ THÊM DÒNG NÀY – CHÍNH LÀ CÁI GÂY LỖI!
+    private string speedTypeKey = "Unknown"; // Sẽ được gán trong Start()
 
+    protected virtual ItemType RewardType => ItemType.Egg;
 
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
+
+        // LẤY KEY TỐC ĐỘ CHỈ 1 LẦN DUY NHẤT – DÙNG CHUNG CHO RAU + ĐỘNG VẬT
+        var shop = GetComponentInParent<ShopTrigger>();
+        if (shop != null)
+        {
+            speedTypeKey = shop.GetProductionSpeedType(); // Dùng field trong ShopTrigger
+        }
+
         ChangeDirection();
     }
 
-    
-  
     protected virtual void Update()
     {
         if (fillImage != null && !isFilling)
         {
             currentFillTime += Time.deltaTime;
 
-          
-            string typeKey = ProductionSpeedManager.GetTypeKey(GetComponentInParent<ShopTrigger>());
-
-           
-            float actualFillTime = ProductionSpeedManager.Instance.GetActualFillTime(fillTime, typeKey);
+            // DÙNG speedTypeKey ĐÃ LƯU – KHÔNG GỌI GetComponentInParent NỮA!
+            float actualFillTime = ProductionSpeedManager.Instance.GetActualFillTime(fillTime, speedTypeKey);
 
             fillImage.fillAmount = currentFillTime / actualFillTime;
 
@@ -73,8 +78,7 @@ public class Castle : MonoBehaviour
     protected virtual void ChangeDirection()
     {
         facingRight = !facingRight;
-        float yRot = facingRight ? 180f : 0f;
-        transform.rotation = Quaternion.Euler(0, yRot, 0);
+        transform.rotation = Quaternion.Euler(0, facingRight ? 180f : 0f, 0);
         timer = Random.Range(minChangeTime, maxChangeTime);
     }
 
@@ -84,7 +88,7 @@ public class Castle : MonoBehaviour
 
         ItemPickupPool.Instance.Get(
             type: RewardType,
-            position: transform.position,           
+            position: transform.position + Vector3.up * 0.05f,
             amount: 1
         );
     }
@@ -94,11 +98,8 @@ public class Castle : MonoBehaviour
         if (other.CompareTag("Player") && allowReward && isFilling)
         {
             SpawnReward();
-
             currentFillTime = 0f;
-            if (fillImage != null)
-                fillImage.fillAmount = 0f;
-
+            if (fillImage != null) fillImage.fillAmount = 0f;
             isFilling = false;
         }
     }

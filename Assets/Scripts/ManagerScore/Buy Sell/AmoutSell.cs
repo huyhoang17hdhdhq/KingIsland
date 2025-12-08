@@ -109,6 +109,7 @@ public class AmoutSell : MonoBehaviour
 
         // Trừ số lượng vật phẩm trong PlayerInventory
         PlayerInventory.Instance.RemoveItem(selectedItem.type, sellAmount);
+        QuestManager.Instance.ReportSellItem(selectedItem.type, sellAmount);
 
         // Cập nhật ObjectPool
         selectedItem.quantity -= sellAmount;
