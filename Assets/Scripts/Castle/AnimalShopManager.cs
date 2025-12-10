@@ -20,25 +20,48 @@ public class AnimalShopManager : MonoBehaviour
         LoadAndSpawnAnimals(shop);
     }
 
+    private static Vector3 GetRandomPositionInsideCollider(Transform parent)
+    {
+        var col = parent.GetComponent<Collider2D>();
+        if (!col) return parent.position;
+
+       
+        Vector2 size = col switch
+        {
+            BoxCollider2D box => box.size,
+            CircleCollider2D circle => Vector2.one * circle.radius * 2f,
+            _ => Vector2.one
+        };
+
+        Vector2 offset = col.offset;
+
+        Vector2 localPos = new Vector2(
+            Random.Range(-size.x * 0.5f + 0.35f, size.x * 0.5f - 0.35f),
+            Random.Range(-size.y * 0.5f + 0.35f, size.y * 0.5f - 0.35f)
+        );
+
+        return parent.TransformPoint(localPos + offset);
+    }
+
     public static void TryBuyCurrentAnimal()
     {
         var shop = ShopTrigger.CurrentShop;
         if (shop == null || shop.ShopData == null) return;
 
-        ResourceType animalType = shop.ShopData.resourceToIncrease; 
-
+        ResourceType animalType = shop.ShopData.resourceToIncrease;
         int currentCount = ResourceManager.Instance.Get(animalType);
         int nextPrice = (currentCount + 1) * shop.ShopData.price;
-       
+
         if (ResourceManager.Instance.TrySpend(ResourceType.Gold, nextPrice))
         {
             ResourceManager.Instance.Set(animalType, currentCount + 1);
+
+            
             GameObject animal = Instantiate(shop.ShopData.prefabToSpawn, shop.AnimalParent);
-            animal.transform.localPosition = new Vector3(0, currentCount * 0.15f, 0);
+            animal.transform.position = GetRandomPositionInsideCollider(shop.AnimalParent);
             animal.SetActive(true);
 
             QuestManager.Instance.ReportBuyAnimal(animalType, 1);
-
             UpdateCurrentShopUI();
         }
     }
@@ -79,13 +102,12 @@ public class AnimalShopManager : MonoBehaviour
         if (shop.ShopData == null || shop.AnimalParent == null) return;
 
         ResourceType animalType = shop.ShopData.resourceToIncrease;
-
         int savedCount = ResourceManager.Instance.Get(animalType);
 
         for (int i = 0; i < savedCount; i++)
         {
             GameObject animal = Instantiate(shop.ShopData.prefabToSpawn, shop.AnimalParent);
-            animal.transform.localPosition = new Vector3(0, i * 0.15f, 0);
+            animal.transform.position = GetRandomPositionInsideCollider(shop.AnimalParent);
             animal.SetActive(true);
         }
     }

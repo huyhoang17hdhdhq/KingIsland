@@ -5,6 +5,9 @@ public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory Instance { get; private set; }
 
+    public delegate void OnInventoryChangedDelegate();
+    public static event OnInventoryChangedDelegate OnInventoryChanged;
+
     public ItemUIManager uiManager;
     public ObjectPool objectPool;
 
@@ -29,6 +32,7 @@ public class PlayerInventory : MonoBehaviour
         }
 
         UpdateAllPoolObjects();
+        OnInventoryChanged?.Invoke();
     }
 
     public void AddItem(ItemType type, int amount)
@@ -51,11 +55,17 @@ public class PlayerInventory : MonoBehaviour
         PlayerPrefs.Save();
 
         uiManager.UpdateItemUI(type, newValue);
+        
         UpdateAllPoolObjects();
+        OnInventoryChanged?.Invoke();
     }
 
     private void UpdateAllPoolObjects()
     {
         objectPool.UpdateObjects(itemCounts, uiManager);
+    }
+    public Dictionary<ItemType, int> GetAllItems()
+    {
+        return new Dictionary<ItemType, int>(itemCounts);
     }
 }

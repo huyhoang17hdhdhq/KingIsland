@@ -25,7 +25,7 @@ public class ObjectPool : MonoBehaviour
     public int preloadAmount = 20;
     private List<GameObject> pool = new();
     private List<PooledItem> activeObjects = new();
-    private void Awake()
+    public void Awake()
     {
         PreloadObjects();
     }
@@ -38,7 +38,7 @@ public class ObjectPool : MonoBehaviour
             pool.Add(obj);
         }
     }
-    private GameObject GetObjectFromPool()
+    public GameObject GetObjectFromPool()
     {
         foreach (var obj in pool)
             if (!obj.activeSelf) return obj;

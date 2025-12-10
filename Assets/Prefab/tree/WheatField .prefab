@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 6442923405019499635}
   - component: {fileID: 8275968794670319518}
   - component: {fileID: 2163058712296831019}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: 'WheatField '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

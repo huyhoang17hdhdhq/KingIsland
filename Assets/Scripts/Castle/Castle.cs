@@ -18,26 +18,28 @@ public class Castle : MonoBehaviour
 
 
     private Rigidbody2D rb;
+    private Collider2D col;
     private float timer;
     private bool facingRight = true;
     private float currentFillTime = 0f;
     protected bool isFilling = false;
 
-    // ĐÃ THÊM DÒNG NÀY – CHÍNH LÀ CÁI GÂY LỖI!
-    private string speedTypeKey = "Unknown"; // Sẽ được gán trong Start()
+    
+    private string speedTypeKey = "Unknown"; 
 
     protected virtual ItemType RewardType => ItemType.Egg;
 
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         rb.gravityScale = 0;
 
-        // LẤY KEY TỐC ĐỘ CHỈ 1 LẦN DUY NHẤT – DÙNG CHUNG CHO RAU + ĐỘNG VẬT
+        
         var shop = GetComponentInParent<ShopTrigger>();
         if (shop != null)
         {
-            speedTypeKey = shop.GetProductionSpeedType(); // Dùng field trong ShopTrigger
+            speedTypeKey = shop.GetProductionSpeedType(); 
         }
 
         ChangeDirection();
@@ -49,10 +51,17 @@ public class Castle : MonoBehaviour
         {
             currentFillTime += Time.deltaTime;
 
-            // DÙNG speedTypeKey ĐÃ LƯU – KHÔNG GỌI GetComponentInParent NỮA!
+            
             float actualFillTime = ProductionSpeedManager.Instance.GetActualFillTime(fillTime, speedTypeKey);
 
             fillImage.fillAmount = currentFillTime / actualFillTime;
+
+            if (col != null)
+            {
+                col.enabled = (currentFillTime >= actualFillTime);
+                
+            }
+         
 
             if (currentFillTime >= actualFillTime)
             {
@@ -97,6 +106,9 @@ public class Castle : MonoBehaviour
     {
         if (other.CompareTag("Player") && allowReward && isFilling)
         {
+            if (HealthPlayer.Instance != null && HealthPlayer.Instance.currentHealth <= 0)
+                return;
+
             SpawnReward();
             currentFillTime = 0f;
             if (fillImage != null) fillImage.fillAmount = 0f;

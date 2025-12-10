@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 3057223548631541267}
   - component: {fileID: 3305113822769719706}
   - component: {fileID: 4779943124171084624}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: SugarBeetField
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 5471097428706698557}
   - component: {fileID: 6279312417768822725}
   - component: {fileID: 5508062621464027451}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Cow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076e95f359e47b54591002ff9508eb11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardPrefab: {fileID: 6319992714190126551, guid: 2fd49b8c0cf37c3488216d89b3aa1b2e, type: 3}
   allowReward: 1
   speed: 0.1
   minChangeTime: 1

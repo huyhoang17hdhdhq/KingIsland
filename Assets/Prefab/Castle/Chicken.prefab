@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 4640952397286958889}
   - component: {fileID: 58986694955107838}
   - component: {fileID: 6382369895274409870}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Chicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67980dbd3be21046934807511628d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardPrefab: {fileID: 4861196369042534917, guid: 584ef0d6fee835f4e8c2592caed6b692, type: 3}
   allowReward: 1
   speed: 0.2
   minChangeTime: 1.5

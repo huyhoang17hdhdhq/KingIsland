@@ -14,12 +14,16 @@ public abstract class CropGrowController : MonoBehaviour
     [SerializeField] protected GameObject cropVisual;
 
     private Coroutine growRoutine;
+    private Collider2D col;
 
-    
+
     protected virtual ItemType RewardType => ItemType.Filed;
 
-    private void Start() => StartGrowing();
-
+    protected virtual void Start()
+    {
+        col = GetComponent<Collider2D>(); 
+        StartGrowing();
+    }
     protected virtual void StartGrowing()
     {
         if (cropVisual != null)
@@ -43,8 +47,15 @@ public abstract class CropGrowController : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
             if (progressFill != null)
                 progressFill.fillAmount = elapsed / growTime;
+
+            if (col != null)
+            {
+                col.enabled = (elapsed >= growTime);
+            }
+          
             yield return null;
         }
+        
         FinishGrowing();
     }
 
@@ -63,6 +74,9 @@ public abstract class CropGrowController : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         if (growRoutine != null) return;
+
+        if (HealthPlayer.Instance != null && HealthPlayer.Instance.currentHealth <= 0)
+            return;
 
         Harvest();
     }

@@ -11,16 +11,18 @@ public class TreeManager : MonoBehaviour
     private bool isPlayerInside = false;
     private float chopTimer = 0f;
     [Header("Thời gian tự động chặt (giây)")]
-    public float autoChopTime = 1.5f; // đứng 1.5 giây là chặt luôn
+    public float autoChopTime = 1.5f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerInside = true;
-            selectMarker.SetActive(true);
-            chopTimer = 0f; // reset timer
-        }
+        if (!other.CompareTag("Player")) return;
+
+        
+        if (HealthPlayer.Instance != null && HealthPlayer.Instance.currentHealth <= 0)
+            return; 
+        isPlayerInside = true;
+        selectMarker.SetActive(true);
+        chopTimer = 0f;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -37,9 +39,17 @@ public class TreeManager : MonoBehaviour
     {
         if (isPlayerInside)
         {
+          
+            if (HealthPlayer.Instance != null && HealthPlayer.Instance.currentHealth <= 0)
+            {
+                isPlayerInside = false;
+                selectMarker.SetActive(false);
+                return;
+            }
+           
+
             chopTimer += Time.deltaTime;
 
-            // ĐỦ THỜI GIAN → TỰ ĐỘNG CHẶT LUÔN!!!
             if (chopTimer >= autoChopTime)
             {
                 Chop();
@@ -59,14 +69,14 @@ public class TreeManager : MonoBehaviour
     {
         Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : transform.position;
 
-        // Rơi đúng 1 khúc gỗ, lệch nhẹ cho đẹp
+        
         Vector3 offset = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 0);
         ItemPickupPool.Instance.Get(ItemType.Wood, spawnPos + offset, 1);
 
         gameObject.SetActive(false);
     }
 
-    // Reset khi tái sử dụng cây (nếu dùng pool cây)
+    
     private void OnEnable()
     {
         selectMarker.SetActive(false);
