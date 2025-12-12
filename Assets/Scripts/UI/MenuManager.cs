@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject bag;
+    public GameObject setting;
+    public GameObject daily;
+    public GameObject option;
+
+    private void Start()
     {
-        
+        bag.SetActive(false);
+        setting.SetActive(false);
+        daily.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenBag() => bag.SetActive(true);
+    public void OpenSetting() => setting.SetActive(true);
+
+    public void OpenDaily()
     {
-        
+        daily.SetActive(true);
+        option.SetActive(false);
     }
+
+    public void Close()
+    {
+        bag.SetActive(false);
+        setting.SetActive(false);
+        daily.SetActive(false);
+        option.SetActive(true);
+    }
+
+
+
+
+
 }

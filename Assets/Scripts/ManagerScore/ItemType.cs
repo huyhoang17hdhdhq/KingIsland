@@ -6,7 +6,6 @@ public enum ItemType
     Sugar,
     Filed,
     Wood,        
-    Iron,
-    Gold,
+    
     
 }

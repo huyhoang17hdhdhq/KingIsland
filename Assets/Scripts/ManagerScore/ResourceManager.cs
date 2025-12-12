@@ -31,6 +31,8 @@ public enum ResourceType
     UnlockIslandCow,
     UnlockIslandFiled,
     UnlockIslandSugar,
+
+    ExtraMaxHealth,
 }
 [Serializable]
 public class ResourceData
@@ -85,6 +87,15 @@ public class ResourceManager : MonoBehaviour
             resourceDict[type].amount -= amount;
             Save(type);
             UpdateUI(type);
+            return true;
+        }
+        return false;
+    }
+    public bool TryAdd(ResourceType type, int amount)
+    {
+        if (resourceDict.ContainsKey(type))
+        {
+            Add(type, amount);
             return true;
         }
         return false;

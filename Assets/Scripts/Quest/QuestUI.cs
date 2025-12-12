@@ -56,4 +56,5 @@ public class QuestUI : MonoBehaviour
         QuestManager.Instance.ClaimCurrentReward();
         UpdateQuestDisplay();
     }
+
 }

@@ -1,22 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
 
 public class HealthPlayer : MonoBehaviour
 {
     [Header("=== CÀI ĐẶT MÁU NGƯỜI CHƠI ===")]
-    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private int baseMaxHealth = 5; // Máu cơ bản
+    [SerializeField] private ResourceType extraMaxHealthKey = ResourceType.ExtraMaxHealth;
+
     [SerializeField] private Image healthFillImage;
-    [SerializeField] private TextMeshProUGUI healthText; 
+    [SerializeField] private TextMeshProUGUI healthText;
 
-    public  int currentHealth;
+    public int currentHealth;
+    public static HealthPlayer Instance { get; private set; }
 
-    public static HealthPlayer Instance { get; private set; } 
+    // MÁU TỐI ĐA HIỆN TẠI = CƠ BẢN + EXTRA
+    public int MaxHealth => baseMaxHealth + ResourceManager.Instance.Get(extraMaxHealthKey);
 
     private void Awake()
     {
         Instance = this;
-        currentHealth = maxHealth;
+        currentHealth = MaxHealth;
         UpdateHealthUI();
     }
 
@@ -28,44 +32,35 @@ public class HealthPlayer : MonoBehaviour
         }
     }
 
-    
-
     public void TakeDamage(int damageAmount)
     {
         if (currentHealth <= 0) return;
-
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(0, currentHealth);
-
         UpdateHealthUI();
-
-        Debug.Log($"PLAYER MẤT MÁU! Còn lại: {currentHealth}/{maxHealth}");
-
+        Debug.Log($"PLAYER MẤT MÁU! Còn lại: {currentHealth}/{MaxHealth}");
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         if (healthFillImage != null)
         {
-            healthFillImage.fillAmount = (float)currentHealth / maxHealth;
+            healthFillImage.fillAmount = (float)currentHealth / MaxHealth;
         }
 
-       
         if (healthText != null)
         {
-            healthText.text = $"{currentHealth}/{maxHealth}";
+            healthText.text = $"{currentHealth}/{MaxHealth}";
         }
-     
     }
 
     private void Die()
     {
         Debug.Log("PLAYER CHẾT RỒI ĐẠI CA ƠI!!!");
-        
     }
 
     [ContextMenu("Test Mất 1 Máu")]
@@ -77,7 +72,7 @@ public class HealthPlayer : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        currentHealth = Mathf.Min(currentHealth, MaxHealth);
         UpdateHealthUI();
     }
 }

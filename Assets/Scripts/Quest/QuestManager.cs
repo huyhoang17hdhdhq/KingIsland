@@ -5,23 +5,33 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance;
 
-    [Header("=== CHUỖI NHIỆM VỤ HIỆN TẠI ===")]
     public QuestChain currentChain;
 
-   
-
     private int currentQuestIndex = 0;
-    private HashSet<QuestType> completedTypes = new HashSet<QuestType>();     
-    private HashSet<QuestType> claimedTypes = new HashSet<QuestType>();       
+    private HashSet<QuestType> completedTypes = new HashSet<QuestType>();
+    private HashSet<QuestType> claimedTypes = new HashSet<QuestType>();
+
+    [System.Serializable]
+    public class QuestVisualGroup
+    {
+        public int questIndex;
+        public List<GameObject> objects;
+    }
+
+    public List<QuestVisualGroup> questVisualGroups = new List<QuestVisualGroup>();
 
     private void Awake()
     {
-        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
 
         Load();
+        UpdateQuestVisuals();
     }
-
 
     public void ReportHarvest(ItemType itemType, int amount = 1)
     {
@@ -36,46 +46,39 @@ public class QuestManager : MonoBehaviour
         if (questType != QuestType.None)
             ReportAction(questType, amount);
     }
+
     public void ReportSellItem(ItemType itemType, int amount = 1)
     {
         QuestType questType = itemType switch
         {
             ItemType.Wood => QuestType.SellWood,
             ItemType.Egg => QuestType.SellEgg,
-          
-            
-          
             _ => QuestType.None
         };
-
         if (questType != QuestType.None)
             ReportAction(questType, amount);
     }
-   
+
     public void ReportBuyAnimal(ResourceType animalType, int amount = 1)
     {
         QuestType questType = animalType switch
         {
             ResourceType.Chicken => QuestType.BuyChicken,
             ResourceType.Cow => QuestType.BuyCow,
-           
-           
             _ => QuestType.None
         };
-
         if (questType != QuestType.None)
             ReportAction(questType, amount);
     }
+
     public void ReportUpgradeSpeed(string typeKey, int amount = 1)
     {
         QuestType questType = typeKey switch
         {
             "Chicken" => QuestType.UpgradeSpeedChicken,
             "Cow" => QuestType.UpgradeSpeedCow,
-            
             _ => QuestType.None
         };
-
         if (questType != QuestType.None)
             ReportAction(questType, amount);
     }
@@ -88,10 +91,8 @@ public class QuestManager : MonoBehaviour
             ResourceType.UnlockIslandCow => QuestType.UnlockIslandCow,
             ResourceType.UnlockIslandFiled => QuestType.UnlockIslandWheat,
             ResourceType.UnlockIslandSugar => QuestType.UnlockIslandSugar,
-
             _ => QuestType.None
         };
-
         if (questType != QuestType.None)
             ReportAction(questType, 1);
     }
@@ -116,18 +117,15 @@ public class QuestManager : MonoBehaviour
     private void CheckCompletion()
     {
         if (currentChain == null || currentQuestIndex >= currentChain.quests.Count) return;
-
         var quest = currentChain.quests[currentQuestIndex];
         int progress = PlayerPrefs.GetInt("QuestProgress_" + quest.type, 0);
 
         if (progress >= quest.requiredAmount && !completedTypes.Contains(quest.type))
         {
             completedTypes.Add(quest.type);
-            Debug.Log($"NHIỆM VỤ HOÀN THÀNH – CHỜ NHẬN THƯỞNG: {quest.title}");
         }
     }
 
-    // HÀM SIÊU QUAN TRỌNG – CHỈ GỌI KHI BẤM NÚT "NHẬN THƯỞNG"
     public void ClaimCurrentReward()
     {
         if (currentChain == null || currentQuestIndex >= currentChain.quests.Count) return;
@@ -138,21 +136,27 @@ public class QuestManager : MonoBehaviour
         if (progress < quest.requiredAmount) return;
         if (claimedTypes.Contains(quest.type)) return;
 
-        // THƯỞNG CHỈ KHI BẤM NÚT!!!
         ResourceManager.Instance.Add(quest.rewardType, quest.rewardAmount);
         claimedTypes.Add(quest.type);
 
-        Debug.Log($"NHẬN THƯỞNG THÀNH CÔNG: +{quest.rewardAmount} {quest.rewardType}");
-
-        // Chuyển sang nhiệm vụ tiếp theo
         currentQuestIndex++;
         Save();
+        UpdateQuestVisuals();
     }
 
-    // DÙNG CHO UI
+    private void UpdateQuestVisuals()
+    {
+        foreach (var group in questVisualGroups)
+        {
+            bool active = (group.questIndex == currentQuestIndex);
+            foreach (var obj in group.objects)
+                obj.SetActive(active);
+        }
+    }
+
     public QuestData GetCurrentQuest() =>
         currentChain != null && currentQuestIndex < currentChain.quests.Count
-            ? currentChain.quests[currentQuestIndex] : null;
+        ? currentChain.quests[currentQuestIndex] : null;
 
     public int GetCurrentProgress()
     {
@@ -183,14 +187,12 @@ public class QuestManager : MonoBehaviour
     {
         currentQuestIndex = PlayerPrefs.GetInt("ActiveQuestIndex", 0);
     }
-    public int GetCurrentQuestNumber()
-    {
-        return currentQuestIndex + 1;
-    }
-    public int GetTotalQuestsInChain()
-    {
-        return currentChain != null ? currentChain.quests.Count : 0;
-    }
+
+    public int GetCurrentQuestNumber() => currentQuestIndex + 1;
+
+    public int GetTotalQuestsInChain() =>
+        currentChain != null ? currentChain.quests.Count : 0;
+
     public string GetQuestProgressText()
     {
         if (currentChain == null) return "Không có nhiệm vụ";
