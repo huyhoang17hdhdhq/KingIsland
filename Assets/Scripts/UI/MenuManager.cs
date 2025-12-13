@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject setting;
     public GameObject daily;
     public GameObject option;
+    public GameObject Sell;
 
     private void Start()
     {
@@ -17,7 +18,12 @@ public class MenuManager : MonoBehaviour
     }
 
     public void OpenBag() => bag.SetActive(true);
-    public void OpenSetting() => setting.SetActive(true);
+    public void OpenSetting()
+    {
+        setting.SetActive(true);
+        option.SetActive(false);
+    }
+    public void OpenSell() => Sell.SetActive(true);
 
     public void OpenDaily()
     {
@@ -31,6 +37,7 @@ public class MenuManager : MonoBehaviour
         setting.SetActive(false);
         daily.SetActive(false);
         option.SetActive(true);
+        Sell.SetActive(false);
     }
 
 

@@ -12,11 +12,15 @@ public class ItemsShop : MonoBehaviour
             Debug.Log("mở shop items");
         }
     }
-
-   
-    public void CloseShopItems()
+    private void OnTriggerExit2D(Collider2D other)  
     {
-        if (shopItems != null)
+        if (other.CompareTag("Player"))
+        {
             shopItems.SetActive(false);
+            Debug.Log("đóng shop items");
+        }
     }
+
+
+
 }

@@ -31,6 +31,7 @@ public class CowManager : Castle
 
     protected override void SpawnReward()
     {
+        MusicManager.Instance.CowSound();
         base.SpawnReward();
         Debug.Log("Bò đã cho sữa");
 

@@ -8,6 +8,7 @@ public class WheatFiled : CropGrowController
 
     protected override void Harvest()
     {
+        MusicManager.Instance.FarmFieldSound();
         base.Harvest();
         Debug.Log("Củ cải đường đã được thu hoạch");
     }

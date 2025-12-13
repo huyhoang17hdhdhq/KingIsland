@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections.Generic;
 
 public class TriggerUnlock : MonoBehaviour
@@ -25,7 +25,7 @@ public class TriggerUnlock : MonoBehaviour
         if (ResourceManager.Instance.Get(saveKey) == 1)
         {
             EnableIsland();
-            gameObject.SetActive(false); // Tắt trigger luôn nếu đã mở
+            gameObject.SetActive(false); 
         }
         else
         {

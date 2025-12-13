@@ -31,6 +31,10 @@ public class QuestManager : MonoBehaviour
 
         Load();
         UpdateQuestVisuals();
+        Debug.Log("QuestManager Awake");
+
+
+
     }
 
     public void ReportHarvest(ItemType itemType, int amount = 1)
@@ -143,16 +147,24 @@ public class QuestManager : MonoBehaviour
         Save();
         UpdateQuestVisuals();
     }
-
     private void UpdateQuestVisuals()
     {
         foreach (var group in questVisualGroups)
         {
-            bool active = (group.questIndex == currentQuestIndex);
+            bool shouldBeActive = group.questIndex <= currentQuestIndex;
+
             foreach (var obj in group.objects)
-                obj.SetActive(active);
+            {
+                if (!obj.activeSelf && shouldBeActive)
+                    obj.SetActive(true);
+                else if (!shouldBeActive)
+                    obj.SetActive(false);
+            }
         }
     }
+
+
+
 
     public QuestData GetCurrentQuest() =>
         currentChain != null && currentQuestIndex < currentChain.quests.Count
@@ -205,4 +217,7 @@ public class QuestManager : MonoBehaviour
 
         return $"Quest {current}";
     }
+    
+
+
 }

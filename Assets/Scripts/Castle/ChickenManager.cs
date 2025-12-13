@@ -33,6 +33,8 @@ public class ChickenManager : Castle
 
     protected override void SpawnReward()
     {
+        animator.SetTrigger("Trigger_Fly");
+        MusicManager.Instance.ChickenSound();
         base.SpawnReward();
         Debug.Log("Gà đã đẻ trứng!");
     }

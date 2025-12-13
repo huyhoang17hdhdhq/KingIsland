@@ -1,11 +1,9 @@
 fileFormatVersion: 2
 guid: d5fcf9fc446cbd1408c08235e7eef32d
-timeCreated: 1762357796
-licenseType: Free
 TextureImporter:
-  serializedVersion: 13
   internalIDToNameTable: []
   externalObjects: {}
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -51,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 1497, y: 0, z: 22, w: 1532}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -82,45 +80,189 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 970
+        width: 296
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404e1d516fdb1604599d95076404b7ad
+      internalID: 1858314437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 1190
+        width: 121
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c09fd2ea000fdc469a4e49cac4bd695
+      internalID: -1846851196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba9c5c4bccbc6d43963652259dc3265
+      internalID: -1825952131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_3
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 970
+        width: 49
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad902ce890d7b1439e635ea863a4f52
+      internalID: 1281109612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1464
+        height: 962
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a1b0c7dcfd73d4bbe108d6df13c996
+      internalID: 1447463536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_5
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 258
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640f6f44e3ac76e40a02bc1c2f7fb59f
+      internalID: 1618904546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_6
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 526
+        height: 516
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a69a3c6c49acbf4a959afd1e82f77e9
+      internalID: -1921769938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID:
-    internalID: 0
+    spriteID: de4ac1f7699028d46a65f4248e13b432
+    internalID: 718200153
     vertices: []
-    indices: []
+    indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
-  mipmapLimitGroupName:
-  output:
-    textureImportInstructions:
-      compressedFormat: 0
-      uncompressedFormat: 0
-      desiredFormat: 0
-      usageMode: 0
-      colorSpace: 0
-      androidETC2FallbackFormat: 0
-      width: 0
-      height: 0
-      depth: 0
-      cubeIntermediateSize: 0
-      cubeMode: 0
-      cubeLayout: 0
-      compressionQuality: 0
-      androidETC2FallbackDownscale: 0
-      vtOnly: 0
-    sourceTextureInformation:
-      width: 0
-      height: 0
-      doesTextureContainAlpha: 0
-      sourceWasHDR: 0
-    importInspectorWarnings:
+    nameFileIdTable:
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_0: 1858314437
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_1: -1846851196
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_2: -1825952131
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_3: 1281109612
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_4: 1447463536
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_5: 1618904546
+      sactx-1-2048x2048-Uncompressed-New Sprite Atlas_BigSize-b22e3057_6: -1921769938
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -28,7 +28,9 @@ public class PickupItem : MonoBehaviour
         isPickedUp = true;
         PlayerInventory.Instance.AddItem(itemType, amount);
 
-        
+        MusicManager.Instance.LootItemsSound();
+
+
         QuestManager.Instance.ReportHarvest(itemType, amount);
 
         Invoke(nameof(ReturnToPool), delayBeforeReturn);

@@ -12,6 +12,10 @@ public class Move : MonoBehaviour
     private Animator animator;
     private TreeManager currentTree;
 
+    private bool isMoving = false;
+
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,15 +27,28 @@ public class Move : MonoBehaviour
         float moveX = joystick.Horizontal();
         float moveY = joystick.Vertical();
         moveInput = new Vector2(moveX, moveY);
+        bool currentlyMoving = moveInput.magnitude > 0.1f;
 
-        if (moveInput.magnitude > 0.1f)
+        if (currentlyMoving)
         {
             animator.SetTrigger("nowFarming");
             animator.SetTrigger("nowWalk");
+
+            if (!isMoving)
+            {
+                MusicManager.Instance.RunSound();
+                isMoving = true;
+            }
         }
         else
         {
-            animator.SetTrigger("nowIdle");
+            if (isMoving)
+            {
+                animator.SetTrigger("nowIdle");
+                MusicManager.Instance.StopSound();
+                isMoving = false;
+            }
+            
         }
 
         if (moveInput.magnitude > 1)

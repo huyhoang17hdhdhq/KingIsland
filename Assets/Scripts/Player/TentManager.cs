@@ -69,6 +69,8 @@ public class TentManager : MonoBehaviour
         if (healFX != null)
             healFX.SetActive(true);
 
+        MusicManager.Instance.HealthSound();
+
         bool wasDead = HealthPlayer.Instance.currentHealth <= 0;
 
         // HỒI ĐẾN MÁU TỐI ĐA HIỆN TẠI

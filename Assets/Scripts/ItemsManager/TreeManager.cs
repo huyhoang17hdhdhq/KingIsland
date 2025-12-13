@@ -68,8 +68,9 @@ public class TreeManager : MonoBehaviour
     private void Die()
     {
         Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : transform.position;
+        MusicManager.Instance.FarmTreeSound();
 
-        
+
         Vector3 offset = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 0);
         ItemPickupPool.Instance.Get(ItemType.Wood, spawnPos + offset, 1);
 
