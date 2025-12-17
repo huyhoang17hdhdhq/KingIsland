@@ -32,7 +32,7 @@ public class CommonUIPanel : MonoBehaviour
             panelContent.SetActive(false);
     }
 
-    public void Show(EventInfo info)
+    public void Show(EventInfor info)
     {
        
         if (nameIslandText != null) nameIslandText.text = info.nameIsland;
@@ -174,6 +174,7 @@ public class CommonUIPanel : MonoBehaviour
             // Có thể hiện thông báo "Không đủ Kim Cương!"
         }
     }
+
     private string GetCurrentShopSpeedType()
     {
         if (ShopTrigger.CurrentShop != null)

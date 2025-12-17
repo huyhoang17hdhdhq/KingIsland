@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ShopTrigger : MonoBehaviour
 {
-    [SerializeField] private EventInfo shopData;
+    [SerializeField] private EventInfor shopData;
     [SerializeField] private GameObject interactButton;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private string customButtonText = "Mở Shop";
@@ -88,7 +88,7 @@ public class ShopTrigger : MonoBehaviour
         return productionSpeedType; 
     }
 
-    public EventInfo ShopData => shopData;
+    public EventInfor ShopData => shopData;
     public Transform AnimalParent => animalParent;
     public Button BuyButton => buyButton;
     public static ShopTrigger CurrentShop => currentShop;

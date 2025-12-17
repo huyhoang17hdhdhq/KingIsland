@@ -9,7 +9,11 @@ public class DailyRewards : MonoBehaviour
     [Header("=== 7 NGÀY PHẦN THƯỞNG ===")]
     [SerializeField] private DailyRewardSlot[] rewardSlots;
 
+    private const string LAST_CLAIM_DATE_KEY = "DailyReward_LastClaimDate";
     private const string LAST_CLAIM_DAY_KEY = "DailyReward_LastClaimDay";
+
+
+
 
     private void Start()
     {
@@ -24,7 +28,12 @@ public class DailyRewards : MonoBehaviour
         {
             int dayIndex = i + 1;
             bool isClaimed = lastClaimedDay >= dayIndex;
-            bool canClaimToday = !isClaimed && lastClaimedDay == i;
+            bool canClaimToday = !isClaimed && lastClaimedDay == i &&
+            IsNewDay();
+
+
+
+
 
             rewardSlots[i].Setup(dayIndex, isClaimed, canClaimToday, ClaimReward);
         }
@@ -51,9 +60,27 @@ public class DailyRewards : MonoBehaviour
 
         PlayerPrefs.SetInt(LAST_CLAIM_DAY_KEY, dayIndex);
         PlayerPrefs.Save();
+        PlayerPrefs.SetString(LAST_CLAIM_DATE_KEY, DateTime.Now.ToString());
+
+
+
+        PlayerPrefs.Save();
+
 
         slot.MarkAsClaimed();
     }
+    private bool IsNewDay()
+    {
+        if (!PlayerPrefs.HasKey(LAST_CLAIM_DATE_KEY))
+            return true;
+
+        DateTime lastDate = DateTime.Parse(
+            PlayerPrefs.GetString(LAST_CLAIM_DATE_KEY)
+        );
+
+        return DateTime.Now.Date > lastDate.Date;
+    }
+
 
     [System.Serializable]
     public class DailyRewardSlot

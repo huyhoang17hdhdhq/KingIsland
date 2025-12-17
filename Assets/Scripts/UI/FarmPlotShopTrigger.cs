@@ -14,7 +14,7 @@ public enum CropType
 public class FarmPlotShopTrigger : MonoBehaviour
 {
     [Header("=== CÀI ĐẶT SHOP RUỘNG ===")]
-    [SerializeField] private EventInfo shopData;
+    [SerializeField] private EventInfor shopData;
     [SerializeField] private GameObject interactButton;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private string customButtonText = "Mở Shop Rau";
@@ -127,7 +127,7 @@ public class FarmPlotShopTrigger : MonoBehaviour
         return productionSpeedType; 
     }
 
-    public EventInfo ShopData => shopData;
+    public EventInfor ShopData => shopData;
     public Button BuyButton => buyButton;
     public static FarmPlotShopTrigger CurrentShop => currentShop;
 

@@ -79,10 +79,15 @@ public class TriggerUnlock : MonoBehaviour
         ResourceManager.Instance.Set(trigger.saveKey, 1);
         QuestManager.Instance.ReportUnlockIsland(trigger.saveKey);
 
-        // Tắt trigger và nút mua
-        trigger.gameObject.SetActive(false);
+        
+        var col = trigger.GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false;
+
+       
         if (trigger.sharedBuyButton != null)
             trigger.sharedBuyButton.SetActive(false);
+
 
         Debug.Log($"ĐÃ MỞ ĐẢO THÀNH CÔNG! Giá: {trigger.unlockPrice} {trigger.costType}");
     }

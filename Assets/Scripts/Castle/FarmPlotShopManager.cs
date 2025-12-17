@@ -27,7 +27,7 @@ public class FarmPlotShopManager : MonoBehaviour
         var shop = FarmPlotShopTrigger.CurrentShop;
         if (shop == null || shop.ShopData == null) return;
 
-        ResourceType plotType = shop.ShopData.unlockedPlotResourceType; // Ví dụ: UnlockedFarmPlots
+        ResourceType plotType = shop.ShopData.unlockedPlotResourceType; 
         int currentCount = ResourceManager.Instance.Get(plotType);
         int nextPrice = (currentCount + 1) * shop.ShopData.price;
 
@@ -43,6 +43,18 @@ public class FarmPlotShopManager : MonoBehaviour
 
             // CẬP NHẬT GIÁ TIỀN VÀ NÚT MUA
             UpdateCurrentShopUI();
+            if (CommonUIPanel.Instance != null)
+            {
+                // Cập nhật giá mới
+                CommonUIPanel.Instance.UpdatePriceText(nextPrice);
+
+                // Cập nhật level (vì vừa tăng 1)
+                int newLevel = currentCount + 1;
+                CommonUIPanel.Instance.UpdateLevelText(newLevel, newLevel + 1);
+
+                // Cập nhật tốc độ sản xuất nếu cần (tùy game của bạn)
+                CommonUIPanel.Instance.UpdateProductionSpeedText();
+            }
         }
     }
 

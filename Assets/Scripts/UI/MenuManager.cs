@@ -17,7 +17,12 @@ public class MenuManager : MonoBehaviour
         daily.SetActive(false);
     }
 
-    public void OpenBag() => bag.SetActive(true);
+    public void OpenBag()
+    {
+       bag.SetActive(true);
+        option.SetActive(false);
+    }
+        
     public void OpenSetting()
     {
         setting.SetActive(true);

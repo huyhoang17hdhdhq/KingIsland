@@ -65,7 +65,7 @@ public class Move : MonoBehaviour
         rb.velocity = moveInput * moveSpeed;
     }
 
-    // ĐÃ XÓA SẠCH 2 HÀM OnTriggerEnter2D và OnTriggerExit2D NHƯ MÀY YÊU CẦU!!!
+    
 
     public void OnFarmAnimationEnd()
     {

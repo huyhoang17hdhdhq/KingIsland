@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Shop Data", menuName = "Shop/Event Info")]
-public class EventInfo : ScriptableObject
+public class EventInfor : ScriptableObject
 {
     public string nameIsland = "Cửa hàng Bò";
     public string castle = "Chuồng Bò VIP";

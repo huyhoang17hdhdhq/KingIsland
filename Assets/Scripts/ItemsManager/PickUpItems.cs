@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PickupItem : MonoBehaviour
+public class PickUpItems : MonoBehaviour
 {
     public ItemType itemType;
     public int amount = 1;

@@ -149,16 +149,30 @@ public class QuestManager : MonoBehaviour
     }
     private void UpdateQuestVisuals()
     {
+        
+    
         foreach (var group in questVisualGroups)
         {
-            bool shouldBeActive = group.questIndex <= currentQuestIndex;
-
-            foreach (var obj in group.objects)
+            for (int i = 0; i < group.objects.Count; i++)
             {
-                if (!obj.activeSelf && shouldBeActive)
-                    obj.SetActive(true);
-                else if (!shouldBeActive)
-                    obj.SetActive(false);
+                var obj = group.objects[i];
+                if (obj == null) continue;
+
+                // CHỈ object index 0 là object quest (bật/tắt theo quest hiện tại)
+                if (i == 0)
+                {
+                    if (group.questIndex == currentQuestIndex)
+                        obj.SetActive(true);
+                    else
+                        obj.SetActive(false);
+                }
+                else
+                {
+                    // Các object khác (đảo, world state):
+                    // Một khi questIndex <= currentQuestIndex thì chỉ bật, KHÔNG BAO GIỜ TẮT
+                    if (!obj.activeSelf && group.questIndex <= currentQuestIndex)
+                        obj.SetActive(true);
+                }
             }
         }
     }
@@ -166,7 +180,9 @@ public class QuestManager : MonoBehaviour
 
 
 
-    public QuestData GetCurrentQuest() =>
+
+
+public QuestData GetCurrentQuest() =>
         currentChain != null && currentQuestIndex < currentChain.quests.Count
         ? currentChain.quests[currentQuestIndex] : null;
 

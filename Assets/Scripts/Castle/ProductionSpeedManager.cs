@@ -28,7 +28,7 @@ public class ProductionSpeedManager : MonoBehaviour
             return false;
 
        
-        EventInfo shopData = GetCurrentShopData();
+        EventInfor shopData = GetCurrentShopData();
         if (shopData == null || shopData.diamond <= 0)
             return false;
 
@@ -94,7 +94,7 @@ public class ProductionSpeedManager : MonoBehaviour
     }
 
     // HÀM HỖ TRỢ: LẤY EventInfo CỦA SHOP ĐANG MỞ (HỖ TRỢ CẢ 2 LOẠI SHOP)
-    private EventInfo GetCurrentShopData()
+    private EventInfor GetCurrentShopData()
     {
         if (ShopTrigger.CurrentShop != null)
             return ShopTrigger.CurrentShop.ShopData;
